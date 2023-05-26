@@ -1,19 +1,10 @@
-# Building
+# 双子星·系统评估
 
-* [Gradle](https://gradle.org/) - Dependency Management
+### 用途
 
-The GradleWrapper in included in this project.
+> 用来评估Minecraft Server的健壮性，以及大致评估服务器的性能。
 
-**Windows:**
+### 注意
 
-```
-gradlew.bat clean build
-```
-
-**macOS/Linux:**
-
-```
-./gradlew clean build
-```
-
-Build artifacts should be found in `./build/libs` folder.
+> - 目前系统还在Bate阶段，无法作为正式的评估系统使用。
+> - 评估结果仅作为参考，请不要以“和评估结果不一致”来作为问题进行反馈。
