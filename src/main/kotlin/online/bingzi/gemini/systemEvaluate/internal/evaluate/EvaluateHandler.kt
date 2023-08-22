@@ -81,7 +81,7 @@ interface EvaluateHandler {
      *
      * @param evaluateHandler
      */
-    fun setNextNode(evaluateHandler: EvaluateHandler)
+    fun setNextHandlerNode(evaluateHandler: EvaluateHandler)
 
     /**
      * Execute fast evaluate

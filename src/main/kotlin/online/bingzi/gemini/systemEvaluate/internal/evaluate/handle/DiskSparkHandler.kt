@@ -27,7 +27,7 @@ class DiskSparkHandler : EvaluateHandler {
     override val weight: Int
         get() = 1
 
-    override fun setNextNode(evaluateHandler: EvaluateHandler) {
+    override fun setNextHandlerNode(evaluateHandler: EvaluateHandler) {
         nextNode = evaluateHandler
     }
 
