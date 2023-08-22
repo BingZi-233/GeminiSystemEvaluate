@@ -6,14 +6,14 @@ package online.bingzi.gemini.systemEvaluate.internal.evaluate
  *
  * @constructor Create empty Evaluate type
  */
-enum class EvaluateType {
+enum class EvaluateType(val displayName: String) {
     /**
      * Fast evaluate
      * 快速评估
      *
      * @constructor Create empty Fast evaluate
      */
-    FastEvaluate,
+    FastEvaluate("快速评估"),
 
     /**
      * Evaluate
@@ -21,5 +21,5 @@ enum class EvaluateType {
      *
      * @constructor Create empty Evaluate
      */
-    AllEvaluate
+    AllEvaluate("完全评估")
 }

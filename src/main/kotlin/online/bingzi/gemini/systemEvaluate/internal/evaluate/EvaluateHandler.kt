@@ -1,5 +1,9 @@
 package online.bingzi.gemini.systemEvaluate.internal.evaluate
 
+import online.bingzi.gemini.systemEvaluate.internal.entity.Request
+import taboolib.common.platform.function.console
+import taboolib.module.lang.sendInfo
+
 /**
  * Evaluate handler
  * 评估处理程序
@@ -26,6 +30,18 @@ interface EvaluateHandler {
     val executionUnitVersion: String
 
     /**
+     * Next node
+     * 下一个处理器节点
+     */
+    var nextNode: EvaluateHandler?
+
+    /**
+     * Weight
+     * 权重
+     */
+    val weight: Int
+
+    /**
      * Is acceptable
      * 是否可接受
      *
@@ -37,12 +53,43 @@ interface EvaluateHandler {
     }
 
     /**
+     * Handle
+     * 处理
+     *
+     * @param request
+     */
+    fun handle(request: Request) {
+        console().sendInfo(
+            "NodeStartInfo",
+            executionUnitVersion,
+            executionUnitName,
+            if (isAcceptable(request.evaluateType)) "接受" else "拒绝"
+        )
+        // 当前链是否能够处理
+        if (isAcceptable(request.evaluateType)) {
+            when (request.evaluateType) {
+                EvaluateType.FastEvaluate -> executeFastEvaluateAction()
+                EvaluateType.AllEvaluate -> executeEvaluateAction()
+            }
+        }
+        nextNode?.handle(request)
+    }
+
+    /**
+     * Set next node
+     * 设置下一个处理器节点
+     *
+     * @param evaluateHandler
+     */
+    fun setNextNode(evaluateHandler: EvaluateHandler)
+
+    /**
      * Execute fast evaluate
      * 执行快速评估动作
      *
      */
     fun executeFastEvaluateAction() {
-        throw NotImplementedError("执行单元 $executionUnitName 不支持 快速评估 动作")
+        throw NotImplementedError("执行单元 $executionUnitName 不支持 ${EvaluateType.FastEvaluate.displayName} 动作")
     }
 
     /**
@@ -51,6 +98,6 @@ interface EvaluateHandler {
      *
      */
     fun executeEvaluateAction() {
-        throw NotImplementedError("执行单元 $executionUnitName 不支持 完全评估 动作")
+        throw NotImplementedError("执行单元 $executionUnitName 不支持 ${EvaluateType.AllEvaluate.displayName} 动作")
     }
 }

@@ -1,7 +1,8 @@
 package online.bingzi.gemini.systemEvaluate
 
-import online.bingzi.gemini.systemEvaluate.internal.util.infoAsLang
 import taboolib.common.platform.Plugin
+import taboolib.common.platform.function.console
+import taboolib.module.lang.sendInfo
 
 object GeminiSystemEvaluate : Plugin() {
 
@@ -9,8 +10,8 @@ object GeminiSystemEvaluate : Plugin() {
      * 初始化
      */
     override fun onLoad() {
-        infoAsLang("Loading")
-        infoAsLang("Loaded")
+        console().sendInfo("Loading")
+        console().sendInfo("Loaded")
     }
 
     /**
@@ -18,8 +19,8 @@ object GeminiSystemEvaluate : Plugin() {
      *
      */
     override fun onEnable() {
-        infoAsLang("Enabling")
-        infoAsLang("Enabled")
+        console().sendInfo("Enabling")
+        console().sendInfo("Enabled")
     }
 
     /**
@@ -27,7 +28,7 @@ object GeminiSystemEvaluate : Plugin() {
      *
      */
     override fun onDisable() {
-        infoAsLang("Disabling")
-        infoAsLang("Disabled")
+        console().sendInfo("Disabling")
+        console().sendInfo("Disabled")
     }
 }
